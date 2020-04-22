@@ -1,6 +1,8 @@
 # GraphQL Mesh Docker
 
-Simple docker image to run GraphQL Mesh
+<img src="img/mesh.png" width=50px> on <img src="img/docker.png" width=50px>
+
+Simple docker image to run [GraphQL Mesh](https://github.com/Urigo/graphql-mesh) (Thank you [Urigo](https://github.com/Urigo) and Mesh community for developing nice tool!)
 
 ## TL;DR
 
@@ -48,7 +50,7 @@ kubectl apply -f k8s
 
 ## Customize
 
-> [GraphQL Mesh .meshrc]()
+> [GraphQL Mesh Basic Usage](https://graphql-mesh.com/docs/getting-started/basic-example/)
 
 - Please follow the guidance of the official document above and create your `.meshrc.yaml`.
 - Place `.meshrc.yaml` in the directory.
