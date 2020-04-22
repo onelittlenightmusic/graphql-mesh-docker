@@ -7,11 +7,20 @@ metadata:
   name: mesh
 spec:
   containers:
-  - image: hiroyukiosaki/graphql-mesh:v0.1.9-all
+  - # image: hiroyukiosaki/graphql-mesh:v0.1.9
+    image: hiroyukiosaki/graphql-mesh:v0.1.9-all
     name: mesh
     resources: {}
     ports:
     - containerPort: 4000
+    volumeMounts:
+    - mountPath: /work/.meshrc.yaml
+      name: meshrc-cm
+      subPath: .meshrc.yaml
+  volumes:
+  - name: meshrc-cm
+    configMap:
+      name: meshrc-cm
   dnsPolicy: ClusterFirst
   restartPolicy: Always
 status: {}
