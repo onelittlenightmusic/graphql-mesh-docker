@@ -13,10 +13,18 @@ docker-compose up -d
 kubectl apply -f k8s
 ```
 
-## What is included
+## Images for GraphQL Mesh
+
+- [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
+  - tag: `v0.1.9` ([Dockerfile](./Dockerfile))
+    - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
+  - tag: `v0.1.9-all` ([Dockerfile-all](./Dockerfile))
+    - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
+
+## What is included in this repo
 
 Resources for docker image building
-- [Docker image](./Dockerfile)
+- [Docker image source = Dockerfile](./Dockerfile)
 - [docker-compose file](./docker-compose.yaml)
 
 Test configuration for GraphQL Mesh for `docker-compse up`
@@ -32,12 +40,16 @@ docker-compose build
 
 ## Run
 
+You can choose step for your envionment (Docker or Kubernetes)
+
 ### 1. On Docker 
 
 Simply run this command.
 
 ```sh
 docker-compose up -d
+# or to run vX.X.X-all
+docker-compose -f docker-compose-all.yaml up -d
 ```
 
 After running docker image, we can access to GraphQL Mesh service at `http://localhost:4000`
@@ -45,6 +57,7 @@ After running docker image, we can access to GraphQL Mesh service at `http://loc
 ### 2. On Kubernetes
 
 ```sh
+# If you want to change image, please edit k8s/pod.yaml
 kubectl apply -f k8s
 ```
 
