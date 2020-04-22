@@ -4,6 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
+      # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
     image: hiroyukiosaki/graphql-mesh:v0.1.9
     ports:

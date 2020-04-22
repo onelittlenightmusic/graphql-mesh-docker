@@ -4,6 +4,7 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile-all
+      # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
         tag: v0.1.9
