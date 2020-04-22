@@ -1,0 +1,10 @@
+version: "3.7"
+services:
+  mesh:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    image: hiroyukiosaki/graphql-mesh:v0.1.9
+    ports:
+    - "4000:4000"
