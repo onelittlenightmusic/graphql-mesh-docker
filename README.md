@@ -5,7 +5,10 @@ Simple docker image to run GraphQL Mesh
 ## TL;DR
 
 ```sh
+# Run on Docker
 docker-compose up -d
+# or run on Kubernetes
+kubectl apply -f k8s
 ```
 
 ## What is included
