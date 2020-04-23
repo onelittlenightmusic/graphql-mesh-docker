@@ -1,0 +1,17 @@
+apiVersion: v1
+data:
+  .meshrc.yaml: "sources:\n  - name: Covid\n    handler:\n      graphql:\n        endpoint:
+    https://covid-19.dava.engineer/api/graphql\n  - name: WorldPop\n    handler:\n
+    \     jsonSchema:\n        baseUrl: https://datasource.kapsarc.org/api/records/1.0/search\n
+    \       operations:\n          - type: Query\n            field: population\n
+    \           path: /?dataset=world-population&q={args.country}&rows=1&sort=year&facet=year&facet=country_name\n
+    \           method: GET        \n            responseSchema: ./src/worldPop.json\ntransforms:\n
+    \ - extend: |\n      extend type Case {\n        population: ApiPopulation\n      }\n
+    \     extend type Query {\n        stat(country: String!): Stat\n      }\n      type
+    Stat {\n        confirmedRatio: Float\n        deathRatio: Float\n        recoveredRatio:
+    Float\n        case: Case\n        population: ApiPopulation\n      }\nadditionalResolvers:\n
+    \ - ./src/case-additional-resolvers.js\n  - ./src/query-additional-resolvers.js"
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: meshrc-cm

@@ -8,7 +8,7 @@ metadata:
 spec:
   containers:
   - # image: hiroyukiosaki/graphql-mesh:v0.1.9
-    image: hiroyukiosaki/graphql-mesh:v0.1.9-all
+    image: hiroyukiosaki/graphql-mesh:v0.1.10
     name: mesh
     resources: {}
     ports:

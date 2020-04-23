@@ -10,15 +10,15 @@ Simple docker image to run [GraphQL Mesh](https://github.com/Urigo/graphql-mesh)
 # Run on Docker
 docker-compose up -d
 # or run on Kubernetes
-kubectl apply -f k8s
+kubectl apply -f k8s/basic
 ```
 
 ## Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
-  - tag: `v0.1.9` ([Dockerfile](./Dockerfile))
+  - tag: `v0.1.10` ([Dockerfile](./Dockerfile))
     - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
-  - tag: `v0.1.9-all` ([Dockerfile-all](./Dockerfile))
+  - tag: `v0.1.10-all` ([Dockerfile-all](./Dockerfile))
     - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
 
 ## What is included in this repo
@@ -58,7 +58,9 @@ After running docker image, we can access to GraphQL Mesh service at `http://loc
 
 ```sh
 # If you want to change image, please edit k8s/pod.yaml
-kubectl apply -f k8s
+kubectl apply -f k8s/basic
+# or
+kubectl apply -f k8s/jsonschema-covid19
 ```
 
 ## Customize
@@ -81,6 +83,6 @@ kubectl apply -f k8s
   - **Overwrite** new ConfigMap resource file with this command.
 
   ```sh
-  kubectl create cm meshrc-cm --from-file .meshrc.yaml --dry-run -o yaml> k8s/meshrc-cm.yaml
+  kubectl create cm meshrc-cm --from-file .meshrc.yaml --dry-run -o yaml> k8s/basic/meshrc-cm.yaml
   ```
   - Run `kubectl apply -f k8s`
