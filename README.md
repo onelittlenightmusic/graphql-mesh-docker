@@ -8,10 +8,14 @@ Simple docker image to run [GraphQL Mesh](https://github.com/Urigo/graphql-mesh)
 
 ```sh
 # Run on Docker
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:v0.1.10
+# or run with docker-compose
 docker-compose up -d
 # or run on Kubernetes
 kubectl apply -f k8s/basic
 ```
+
+And access to `http://localhost:4000`.
 
 ## Images for GraphQL Mesh
 
@@ -62,6 +66,13 @@ kubectl apply -f k8s/basic
 # or
 kubectl apply -f k8s/jsonschema-covid19
 ```
+
+After the pod running, we can forward the kubernetes service port to local machine with this command and access to GraphQL Mesh at `http://localhost:4000`.
+
+```
+kubectl port-forward svc/mesh-svc 4000:4000 &
+```
+
 
 ## Customize
 
