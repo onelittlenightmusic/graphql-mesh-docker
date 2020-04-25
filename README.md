@@ -2,7 +2,9 @@
 
 <img src="img/mesh.png" width=50px> on <img src="img/docker.png" width=50px>
 
-Simple docker image to run [GraphQL Mesh](https://github.com/Urigo/graphql-mesh) (Thank you [Urigo](https://github.com/Urigo) and Mesh community for developing nice tool!)
+Simple docker image to run just a [GraphQL Mesh](https://github.com/Urigo/graphql-mesh) (Thank you [Urigo](https://github.com/Urigo) and Mesh community for developing nice tool!)
+
+Please prepare only Docker environment and run the command. No need to understand Node.js.
 
 ## TL;DR
 
@@ -34,14 +36,6 @@ Resources for docker image building
 Test configuration for GraphQL Mesh for `docker-compse up`
 - [./work](./work)
 
-## Build
-
-We can utilize `docker-compose` command to build with Dockerfile
-
-```sh
-docker-compose build
-```
-
 ## Run
 
 You can choose step for your envionment (Docker or Kubernetes)
@@ -58,7 +52,7 @@ docker-compose up -d
 docker-compose -f docker-compose-all.yaml up -d
 ```
 
-After running docker image, we can access to GraphQL Mesh service at `http://localhost:4000`
+After running docker image, you can access to GraphQL Mesh service at `http://localhost:4000` and you will see this screen. 
 
 ### 2. On Kubernetes
 
@@ -99,3 +93,12 @@ kubectl port-forward svc/mesh-svc 4000:4000 &
   kubectl create cm meshrc-cm --from-file .meshrc.yaml --dry-run -o yaml> k8s/basic/meshrc-cm.yaml
   ```
   - Run `kubectl apply -f k8s`
+
+## Build on your own
+
+We can utilize `docker-compose` command to build with Dockerfile
+
+```sh
+docker-compose build
+```
+

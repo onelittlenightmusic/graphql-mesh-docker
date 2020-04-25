@@ -2,6 +2,9 @@
   "name": "test",
   "version": "0.1.9",
   "main": "index.js",
+  "scripts": {
+    "start": "graphql-mesh serve --example-query example-query.graphql"
+  },
   "license": "Apache-2.0",
   "licenses": [
     {
