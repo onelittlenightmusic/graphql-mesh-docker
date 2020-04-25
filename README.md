@@ -100,8 +100,7 @@ kubectl port-forward svc/mesh-svc 4000:4000 &
 git clone https://github.com/jycouet/covid-mesh
 
 # Mount this directory into container and run.
-DOCKER_CMD="bin/bash -c 'yarn install && yarn start'"
-docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukiosaki/graphql-mesh:v0.1.10 $DOCKER_CMD
+docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukiosaki/graphql-mesh:v0.1.10 /bin/bash -c 'yarn install && yarn start'
 ```
 
 
