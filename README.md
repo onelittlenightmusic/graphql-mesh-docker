@@ -69,8 +69,7 @@ After the pod running, we can forward the kubernetes service port to local machi
 kubectl port-forward svc/mesh-svc 4000:4000 &
 ```
 
-
-## Customize
+## Customize .meshrc
 
 > [GraphQL Mesh Basic Usage](https://graphql-mesh.com/docs/getting-started/basic-example/)
 
@@ -93,6 +92,18 @@ kubectl port-forward svc/mesh-svc 4000:4000 &
   kubectl create cm meshrc-cm --from-file .meshrc.yaml --dry-run -o yaml> k8s/basic/meshrc-cm.yaml
   ```
   - Run `kubectl apply -f k8s`
+
+## Clone another existing example and run in Docker
+
+```sh
+# This clones example and creates a directory "covid-mesh"
+git clone https://github.com/jycouet/covid-mesh
+
+# Mount this directory into container and run.
+DOCKER_CMD="bin/bash -c 'yarn install && yarn start'"
+docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukiosaki/graphql-mesh:v0.1.10 $DOCKER_CMD
+```
+
 
 ## Build on your own
 
