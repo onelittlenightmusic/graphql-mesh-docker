@@ -51,6 +51,8 @@ You can choose step for your envionment (Docker or Kubernetes)
 Simply run this command.
 
 ```sh
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:v0.1.10
+# or docker-run
 docker-compose up -d
 # or to run vX.X.X-all
 docker-compose -f docker-compose-all.yaml up -d
