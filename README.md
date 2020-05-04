@@ -47,8 +47,8 @@ Simply run this command.
 
 ```sh
 # Just docker run (choose tag version)
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:v0.1.10
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:v0.1.10-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
 ```
 
 Alternatives
