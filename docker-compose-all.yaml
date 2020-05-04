@@ -7,8 +7,20 @@ services:
       # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
-        tag: v0.1.10
+        tag: latest
         packages: "@graphql-mesh/openapi @graphql-mesh/graphql @graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend"
-    image: hiroyukiosaki/graphql-mesh:v0.1.10-all
+    image: hiroyukiosaki/graphql-mesh:latest-all
+    ports:
+    - "4000:4000"
+  mesh-ver:
+    build:
+      context: ./
+      dockerfile: Dockerfile-all
+      # volumes:
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+      args:
+        tag: v0.1.13
+        packages: "@graphql-mesh/openapi @graphql-mesh/graphql @graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend"
+    image: hiroyukiosaki/graphql-mesh:v0.1.13-all
     ports:
     - "4000:4000"
