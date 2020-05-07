@@ -55,9 +55,9 @@ Alternatives
 
 ```sh
 # docker-compose
-docker-compose up -d
+docker-compose up -d mesh
 # or to run vX.X.X-all
-docker-compose -f docker-compose-all.yaml up -d
+docker-compose -f docker-compose-all.yaml up -d mesh
 ```
 
 After running docker image, you can access to GraphQL Mesh service at `http://localhost:4000` and you will see this screen. 
@@ -98,7 +98,7 @@ There are two ways to customize GraphQL Mesh Docker.
       volumes:
         - ./.meshrc.yaml:/work/.meshrc.yaml # <- comment out and ponit your .meshrc.yaml
   ```
-  - Run `docker-compose up -d`
+  - Run `docker-compose up -d mesh`
 
   #### On Kubernetes
   - **Overwrite** new ConfigMap resource file with this command.
