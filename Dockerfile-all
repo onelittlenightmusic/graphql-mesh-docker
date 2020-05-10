@@ -2,4 +2,3 @@ ARG tag=latest
 FROM hiroyukiosaki/graphql-mesh:${tag}
 ARG packages=@graphql-mesh/openapi
 RUN yarn add $packages
-CMD yarn graphql-mesh serve

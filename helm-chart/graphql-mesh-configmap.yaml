@@ -1,0 +1,27 @@
+apiVersion: v1
+data:
+  .meshrc.yaml: |-
+    sources:
+      - name: Wiki
+        handler:
+          openapi:
+            source: https://api.apis.guru/v2/specs/wikimedia.org/1.0.0/swagger.yaml
+  example-query.graphql: |-
+    query wikipediaMetricsSample {
+      getMetricsPageviewsAggregateProjectAccessAgentGranularityStartEnd(
+        access: ALL_ACCESS
+        agent: USER
+        start: "20200101"
+        end: "20200225"
+        project: "en.wikipedia.org"
+        granularity: DAILY
+      ) {
+        items {
+          views
+        }
+      }
+    }
+kind: ConfigMap
+metadata:
+  creationTimestamp: null
+  name: graphql-mesh-meshrc

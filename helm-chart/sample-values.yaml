@@ -1,0 +1,13 @@
+mountConfigMap:
+  .meshrc.yaml: graphql-mesh-meshrc
+  example-query.graphql: graphql-mesh-meshrc
+  init.sh: graphql-mesh-init-sh
+
+ingress:
+  enabled: true
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    # kubernetes.io/tls-acme: "true"
+  hosts:
+    - host: graphql-mesh.127.0.0.1.xip.io
+      paths: ["/"]

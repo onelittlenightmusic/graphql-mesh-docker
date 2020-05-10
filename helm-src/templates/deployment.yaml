@@ -47,6 +47,18 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
+          {{- with .Values.mountConfigMap }}
+          volumeMounts:
+          {{- range $file, $configMap := . }}
+          - mountPath: "/work/{{ $file }}"
+            name: {{ $configMap }}
+            subPath: {{ $file }}
+          {{- end }}
+          {{- end }}
+          {{- with .Values.command }}
+          command:
+            {{- toYaml . | nindent 12}}
+          {{- end}}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
@@ -58,4 +70,12 @@ spec:
       {{- with .Values.tolerations }}
       tolerations:
         {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.mountConfigMap }}
+      volumes:
+        {{- range $configMap := values . | uniq }}
+        - name: {{ $configMap }}
+          configMap:
+            name: {{ $configMap }}
+        {{- end }}
       {{- end }}

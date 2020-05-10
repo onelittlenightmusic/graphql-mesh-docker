@@ -15,6 +15,6 @@ services:
       dockerfile: Dockerfile
       # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
-    image: hiroyukiosaki/graphql-mesh:v0.1.13
+    image: hiroyukiosaki/graphql-mesh:v0.1.15
     ports:
     - "4000:4000"

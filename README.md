@@ -12,6 +12,9 @@ Please prepare only Docker environment and run the command. No need to understan
 - [Run](#run)
   - [1. On Docker](#1-on-docker)
   - [2. On Kubernetes](#2-on-kubernetes)
+      - [2.1 Use `kubectl`](#21-use-kubectl)
+      - [2.2 Use `helm`](#22-use-helm)
+        - [Parameters](#parameters)
 - [Customize](#customize)
   - [Customize .meshrc](#customize-meshrc)
       - [On Docker](#on-docker)
@@ -20,6 +23,8 @@ Please prepare only Docker environment and run the command. No need to understan
 - [Example](#example)
   - [GraphQL Mesh with MySQL](#graphql-mesh-with-mysql)
 - [Build on your own](#build-on-your-own)
+
+
 # TL;DR
 
 ```sh
@@ -64,18 +69,72 @@ After running docker image, you can access to GraphQL Mesh service at `http://lo
 
 ## 2. On Kubernetes
 
+There are two methods.
+
+- `kubectl`
+- `helm`
+
+You need Kubernetes cluster.
+
+If you don't have Kubernetes cluster, you can create Kubernetes on Docker with [KinD](https://github.com/kubernetes-sigs/kind)
+
 ```sh
-# If you want to change image, please edit k8s/pod.yaml
-kubectl apply -f k8s/basic
-# or
-kubectl apply -f k8s/jsonschema-covid19
+kind create cluster --name graphql --config kind-config.yaml
 ```
 
-After the pod running, we can forward the kubernetes service port to local machine with this command and access to GraphQL Mesh at `http://localhost:4000`.
+  #### 2.1 Use `kubectl`
 
-```
-kubectl port-forward svc/mesh-svc 4000:4000 &
-```
+  ```sh
+  # If you want to change image, please edit k8s/pod.yaml
+  kubectl apply -f k8s/basic
+  # or
+  kubectl apply -f k8s/jsonschema-covid19
+  ```
+
+  After the pod running, we can forward the kubernetes service port to local machine with this command and access to GraphQL Mesh at `http://localhost:4000`.
+
+  ```
+  kubectl port-forward svc/mesh-svc 4000:4000 &
+  ```
+
+  #### 2.2 Use `helm`
+
+  ```sh
+  # Add repository
+  helm repo add graphql-mesh https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
+  # Refresh repository
+  helm repo up
+  # Install helm chart into Kubernetes
+  helm install my-graphql-mesh graphql-mesh/graphql-mesh
+  # or install with parameter file
+  helm install my-graphql-mesh graphql-mesh/graphql-mesh -f <parameter-values.yaml>
+  ```
+
+  ##### Parameters
+
+  | Name | Description | Default |
+  |-|-|-|
+  | `useConfigMap.".meshrc.yaml"` | ConfigMap name containing `.meshrc.yaml` file | `None` |
+  | `useConfigMap."example-query.graphql"` | ConfigMap name containing `example-query.graphql` file | `None` |
+  | `useConfigMap."init.sh"` | ConfigMap name containing `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
+  | `replicaCount` | Count of replica pods | `1` |
+  | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
+  | `image.tag` | Image tag | `latest` |
+  | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
+  | `imagePullSecrets` | Array of secret name | `['my-secret']` |
+  | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
+  | `serviceAccount.name` | ServiceAccount name | `""` |
+  | `serviceAccount.annotations` | Annotation structure for ServiceAccount | `{}` |
+  | `service.type` | Service type | `ClusterIP` |
+  | `service.port` | Service port | `80` |
+  | `service.annotations` | Annotation structure for Service | `{}`|
+  | `ingress.enabled` | Enable an Ingress | `false` |
+  | `ingress.annotations` | Annotation structure for Ingress | `{}` |
+  | `ingress.hosts.host` | Host name for Ingress | `graphql-mesh.local` |
+  | `ingress.hosts.path` | Host path array for Ingress | `[]` |
+  | `resources` | Resource limits and requests (e.g. `limits: { cpu: 100m, memory: 128Mi }`) | `{}` |
+
+  > Please refer to [sample parameter values file](helm-chart/sample-values.yaml) for details.
 
 # Customize
 
