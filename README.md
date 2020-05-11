@@ -1,12 +1,12 @@
-# GraphQL Mesh Docker
+# GraphQL Mesh Docker (supports Kubernetes/Helm)
 
-<img src="img/mesh.png" width=50px> on <img src="img/docker.png" width=50px>
+<img src="img/mesh.png" width=50px> on <img src="img/docker.png" width=50px> or  <img src="img/kubernetes.png" width=50px> /  <img src="img/helm.png" width=50px>
 
 Simple docker image to run just a [GraphQL Mesh](https://github.com/Urigo/graphql-mesh) (Thank you [Urigo](https://github.com/Urigo) and Mesh community for developing nice tool!)
 
-Please prepare only Docker environment and run the command. No need to understand Node.js.
+Please prepare only Docker environment or Kubernetes and run the command. No need to understand Node.js.
 
-- [GraphQL Mesh Docker](#graphql-mesh-docker)
+- [GraphQL Mesh Docker (supports Kubernetes/Helm)](#graphql-mesh-docker-supports-kuberneteshelm)
 - [TL;DR](#tldr)
 - [Images for GraphQL Mesh](#images-for-graphql-mesh)
 - [Run](#run)
@@ -121,7 +121,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
   | `image.tag` | Image tag | `latest` |
   | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
-  | `imagePullSecrets` | Array of secret name | `['my-secret']` |
+  | `imagePullSecrets` | Array of secret name | `[]` |
   | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
   | `serviceAccount.name` | ServiceAccount name | `""` |
   | `serviceAccount.annotations` | Annotation structure for ServiceAccount | `{}` |
@@ -130,7 +130,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `service.annotations` | Annotation structure for Service | `{}`|
   | `ingress.enabled` | Enable an Ingress | `false` |
   | `ingress.annotations` | Annotation structure for Ingress | `{}` |
-  | `ingress.hosts.host` | Host name for Ingress | `graphql-mesh.local` |
+  | `ingress.hosts.host` | Host name for Ingress | `graphql-mesh.127.0.0.1.xip.io` |
   | `ingress.hosts.path` | Host path array for Ingress | `[]` |
   | `resources` | Resource limits and requests (e.g. `limits: { cpu: 100m, memory: 128Mi }`) | `{}` |
 
