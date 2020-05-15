@@ -1,0 +1,14 @@
+{{- if .Values.mount -}}
+{{- $fullName := include "graphql-mesh.fullname" . -}}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ $fullName }}-raw-files
+  labels:
+    {{- include "graphql-mesh.labels" . | nindent 4 }}
+data:
+  {{- range $file, $content := .Values.mount}}
+  {{ $file }}: |
+    {{- $content | nindent 4 }}
+  {{- end }}
+{{- end }}

@@ -114,9 +114,12 @@ kind create cluster --name graphql --config kind-config.yaml
 
   | Name | Description | Default |
   |-|-|-|
-  | `useConfigMap.".meshrc.yaml"` | ConfigMap name containing `.meshrc.yaml` file | `None` |
-  | `useConfigMap."example-query.graphql"` | ConfigMap name containing `example-query.graphql` file | `None` |
-  | `useConfigMap."init.sh"` | ConfigMap name containing `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
+  | `mountConfigMap.".meshrc.yaml"` | ConfigMap name containing `.meshrc.yaml` file | `None` |
+  | `mountConfigMap."example-query.graphql"` | ConfigMap name containing `example-query.graphql` file | `None` |
+  | `mountConfigMap."init.sh"` | ConfigMap name containing `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
+  | `mount.".meshrc.yaml"` | inlined `.meshrc.yaml` file | `None` |
+  | `mount."example-query.graphql"` | inlined `example-query.graphql` file | `None` |
+  | `mount."init.sh"` | inlined  `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
   | `replicaCount` | Count of replica pods | `1` |
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
   | `image.tag` | Image tag | `latest` |
@@ -181,6 +184,8 @@ docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukio
 
 ## GraphQL Mesh with MySQL
 
+![](img/2020-04-26-19-07-16.png)
+
 The following  use [mysql-employee](https://github.com/Urigo/graphql-mesh/tree/master/examples/mysql-employees) example.
 
 Simpler docker-compose setup is [here](https://github.com/onelittlenightmusic/graphql-mesh-docker-mysql-example).
@@ -212,7 +217,7 @@ $ yarn start
 
 Access `http://localhost:4000`
 
-![](img/2020-04-26-19-07-16.png)
+
 
 <!---
 ### GraphQL Mesh with PostreSQL
@@ -236,7 +241,7 @@ git clone https://github.com/Urigo/graphql-mesh.git
 
 # Build on your own
 
-We can utilize `docker-compose` command to build with Dockerfile
+Modify Dockerfile and utilize `docker-compose` command to build with Dockerfile.
 
 ```sh
 docker-compose build

@@ -47,11 +47,18 @@ spec:
               port: http
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          {{- with .Values.mountConfigMap }}
           volumeMounts:
+          {{- with .Values.mountConfigMap }}
           {{- range $file, $configMap := . }}
           - mountPath: "/work/{{ $file }}"
             name: {{ $configMap }}
+            subPath: {{ $file }}
+          {{- end }}
+          {{- end }}
+          {{- with .Values.mount }}
+          {{- range $file := keys . }}
+          - mountPath: "/work/{{ $file }}"
+            name: raw-files
             subPath: {{ $file }}
           {{- end }}
           {{- end }}
@@ -71,11 +78,16 @@ spec:
       tolerations:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      {{- with .Values.mountConfigMap }}
       volumes:
+      {{- with .Values.mountConfigMap }}
         {{- range $configMap := values . | uniq }}
         - name: {{ $configMap }}
           configMap:
             name: {{ $configMap }}
         {{- end }}
+      {{- end }}
+      {{- if .Values.mount }}
+        - name: raw-files
+          configMap:
+            name: {{ include "graphql-mesh.fullname" . }}-raw-files
       {{- end }}
