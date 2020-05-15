@@ -1,7 +1,27 @@
-mountConfigMap:
-  .meshrc.yaml: graphql-mesh-meshrc
-  example-query.graphql: graphql-mesh-meshrc
-  init.sh: graphql-mesh-init-sh
+# mountConfigMap:
+#   # mount and mountConfigMap cannot include the same file name.
+#   .meshrc.yaml: graphql-mesh-meshrc
+#   example-query.graphql: graphql-mesh-meshrc
+#   init.sh: graphql-mesh-init-sh
+
+mount:
+  # mount and mountConfigMap cannot include the same file name.
+  .meshrc.yaml: |-
+    sources:
+      - name: Wiki
+        handler:
+          openapi:
+            source: https://ghibliapi.herokuapp.com/swagger.yaml
+  example-query.graphql: |-
+    query {
+      getFilms(limit: 30) {
+        title
+        description
+      }
+    }
+  init.sh: |-
+    #!/bin/bash
+    echo "test"
 
 ingress:
   enabled: true
