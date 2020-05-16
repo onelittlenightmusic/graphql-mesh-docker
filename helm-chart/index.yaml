@@ -2,13 +2,16 @@ apiVersion: v1
 entries:
   graphql-mesh:
   - apiVersion: v2
-    appVersion: 1.16.0
-    created: "2020-05-15T02:11:30.381227-07:00"
-    description: A Helm chart for Kubernetes
-    digest: 1f21329d2292ae798c6d4446a488644cc5358f4bb3281ad3bee8eac3b6e024ab
+    appVersion: 0.1.15
+    created: "2020-05-16T12:55:31.657957-07:00"
+    description: A Helm chart for GraphQL Mesh
+    digest: 960cfd1d4b7fb3a07b78f0ccf5ec0015e2800d4020a730412c4092a6d0369672
+    home: https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
     name: graphql-mesh
+    sources:
+    - https://github.com/onelittlenightmusic/graphql-mesh-docker
     type: application
     urls:
     - https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart/graphql-mesh-0.1.0.tgz
     version: 0.1.0
-generated: "2020-05-15T02:11:30.380537-07:00"
+generated: "2020-05-16T12:55:31.654756-07:00"
