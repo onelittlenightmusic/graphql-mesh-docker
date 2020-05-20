@@ -8,7 +8,7 @@ services:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
         tag: latest
-        packages: "@graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend"
+        packages: "@graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend @graphql-mesh/transform-federation"
     image: hiroyukiosaki/graphql-mesh:latest-all
     ports:
     - "4000:4000"
@@ -20,7 +20,7 @@ services:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
         tag: v0.1.17
-        packages: "@graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend"
+        packages: "@graphql-mesh/handler-federation @graphql-mesh/openapi @graphql-mesh/json-schema @graphql-mesh/postgraphile @graphql-mesh/grpc @graphql-mesh/soap @graphql-mesh/mongoose @graphql-mesh/odata @graphql-mesh/thrift @graphql-mesh/tuql @graphql-mesh/mysql @graphql-mesh/neo4j @graphql-mesh/transform-extend @graphql-mesh/transform-federation"
     image: hiroyukiosaki/graphql-mesh:v0.1.17-all
     ports:
     - "4000:4000"

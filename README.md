@@ -37,9 +37,9 @@ And access to `http://localhost:4000`.
 # Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
-  - tag: `v0.1.15`, `latest` ([Dockerfile](./Dockerfile))
+  - tag: `v0.1.17`, `latest` ([Dockerfile](./Dockerfile))
     - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
-  - tag: `v0.1.15-all`, `latest-all` ([Dockerfile-all](./Dockerfile))
+  - tag: `v0.1.17-all`, `latest-all` ([Dockerfile-all](./Dockerfile))
     - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
 
 # Run
