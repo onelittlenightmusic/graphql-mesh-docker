@@ -8,7 +8,8 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 - [GraphQL Mesh Docker (supports Kubernetes/Helm)](#graphql-mesh-docker-supports-kuberneteshelm)
 - [TL;DR](#tldr)
-- [Images for GraphQL Mesh](#images-for-graphql-mesh)
+- [Architecture](#architecture)
+- [Docker Images for GraphQL Mesh](#docker-images-for-graphql-mesh)
 - [Run](#run)
   - [1. On Docker](#1-on-docker)
   - [2. On Kubernetes](#2-on-kubernetes)
@@ -18,7 +19,8 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 - [Customize](#customize)
   - [Customize .meshrc](#customize-meshrc)
       - [On Docker](#on-docker)
-      - [On Kubernetes](#on-kubernetes)
+      - [On Kubernetes (not using Helm)](#on-kubernetes-not-using-helm)
+      - [With Helm](#with-helm)
   - [Clone another existing example and run in Docker](#clone-another-existing-example-and-run-in-docker)
 - [Example](#example)
   - [GraphQL Mesh with MySQL](#graphql-mesh-with-mysql)
@@ -29,12 +31,26 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:v0.1.10
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
+# or run on Kubernetes with helm 
+helm repo add graphql-mesh https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
+helm repo up
+helm install my-graphql-mesh graphql-mesh/graphql-mesh
 ```
 
 And access to `http://localhost:4000`.
 
-# Images for GraphQL Mesh
+# Architecture
+
+<img src="img/2020-05-25-13-35-39.png" width=400px>
+
+Data sources are databases like MySQL or PostgreSQL.
+
+[GraphQL Mesh](https://github.com/Urigo/graphql-mesh) can convert these data sources to GraphQL API.
+
+GraphQL Mesh Docker runs GraphQL Mesh in Docker container. You can customize GraphQL Mesh settings by changing `.meshrc.yaml` and mounting the file in Docker container ([see Customize](#customize))
+
+# Docker Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
   - tag: `v0.1.17`, `latest` ([Dockerfile](./Dockerfile))
@@ -148,10 +164,10 @@ There are two ways to customize GraphQL Mesh Docker.
 
 ## Customize .meshrc
 
-> [GraphQL Mesh Basic Usage](https://graphql-mesh.com/docs/getting-started/basic-example/)
+> [GraphQL Mesh Basic Usage (official document)](https://graphql-mesh.com/docs/getting-started/basic-example/)
 
-- Please follow the guidance of the official document above and create your `.meshrc.yaml`.
-- Place `.meshrc.yaml` in the directory.
+- Create your `.meshrc.yaml`. Please follow the guidance of the official document above.
+- Place `.meshrc.yaml` in the current directory.
 
   #### On Docker
   - Edit `docker-compose.yaml` file in order to point your `.meshrc.yaml`
@@ -162,13 +178,27 @@ There are two ways to customize GraphQL Mesh Docker.
   ```
   - Run `docker-compose up -d mesh`
 
-  #### On Kubernetes
+  #### On Kubernetes (not using Helm)
   - **Overwrite** new ConfigMap resource file with this command.
 
   ```sh
   kubectl create cm meshrc-cm --from-file .meshrc.yaml --dry-run -o yaml> k8s/basic/meshrc-cm.yaml
   ```
   - Run `kubectl apply -f k8s/basic`
+
+  #### With Helm
+
+  Download [sample values.yaml file](helm-chart/sample-values.yaml) and edit it to include your `.meshrc.yaml` 
+
+  ```yaml
+  mount:
+  .meshrc.yaml: |-
+    sources:
+      - name: Ghibli
+        handler:
+          openapi:
+            source: https://ghibliapi.herokuapp.com/swagger.yaml
+  ```
 
 ## Clone another existing example and run in Docker
 
@@ -177,7 +207,7 @@ There are two ways to customize GraphQL Mesh Docker.
 git clone https://github.com/jycouet/covid-mesh
 
 # Mount this directory into container and run.
-docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukiosaki/graphql-mesh:v0.1.10 /bin/bash -c 'yarn install && yarn start'
+docker run --name mesh -p 4000:4000 -v `pwd`/covid-mesh:/work -it --rm hiroyukiosaki/graphql-mesh:v0.1.17 /bin/bash -c 'yarn install && yarn start'
 ```
 
 # Example
@@ -204,7 +234,7 @@ $ mysql < employees.sql -p
 git clone https://github.com/Urigo/graphql-mesh.git
 
 # Mount this directory into container and run.
-docker run --name mesh -v `pwd`/graphql-mesh/examples/mysql-employees:/work -p 4000:4000 -d hiroyukiosaki/graphql-mesh:v0.1.10 /bin/bash -c 'sleep 3600'
+docker run --name mesh -v `pwd`/graphql-mesh/examples/mysql-employees:/work -p 4000:4000 -d hiroyukiosaki/graphql-mesh:v0.1.17 /bin/bash -c 'sleep 3600'
 
 # Edit .meshrc.yaml
 # Point host address like this (in Mac)
