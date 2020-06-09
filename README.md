@@ -138,7 +138,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `mount."init.sh"` | inlined  `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
   | `replicaCount` | Count of replica pods | `1` |
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
-  | `image.tag` | Image tag | `latest` |
+  | `image.tag` | Image tag | `0.2.8` |
   | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
   | `imagePullSecrets` | Array of secret name | `[]` |
   | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
