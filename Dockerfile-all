@@ -1,4 +1,19 @@
 ARG tag=latest
 FROM hiroyukiosaki/graphql-mesh:${tag}
-ARG packages=@graphql-mesh/openapi
-RUN yarn add $packages
+ARG packagever
+RUN yarn add \
+  @graphql-mesh/openapi@$packagever \
+  @graphql-mesh/json-schema@$packagever \
+  @graphql-mesh/postgraphile@$packagever \
+  @graphql-mesh/grpc@$packagever \
+  @graphql-mesh/soap@$packagever \
+  @graphql-mesh/mongoose@$packagever \
+  @graphql-mesh/odata@$packagever \
+  @graphql-mesh/thrift@$packagever \
+  @graphql-mesh/tuql@$packagever \
+  @graphql-mesh/mysql@$packagever \
+  @graphql-mesh/neo4j@$packagever \
+  @graphql-mesh/transform-federation@$packagever\
+  @graphql-mesh/merger-federation@$packagever \
+  @apollo/gateway \
+  apollo-server
