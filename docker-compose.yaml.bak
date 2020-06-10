@@ -7,8 +7,8 @@ services:
       # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
-        packagever: 0.2.9
-    image: hiroyukiosaki/graphql-mesh:v0.2.9
+        packagever: 0.2.8
+    image: hiroyukiosaki/graphql-mesh:v0.2.8
     ports:
     - "4000:4000"
   mesh-ver-all:
@@ -18,9 +18,9 @@ services:
       # volumes:
       # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
-        tag: v0.2.9
-        packagever: 0.2.9
-    image: hiroyukiosaki/graphql-mesh:v0.2.9-all
+        tag: v0.2.8
+        packagever: 0.2.8
+    image: hiroyukiosaki/graphql-mesh:v0.2.8-all
     ports:
     - "4000:4000"
   # mesh:
