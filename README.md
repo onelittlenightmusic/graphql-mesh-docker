@@ -31,7 +31,7 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.10-all
 # or run on Kubernetes with helm 
 helm repo add graphql-mesh https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
 helm repo up
@@ -68,8 +68,8 @@ Simply run this command.
 
 ```sh
 # Just docker run (choose tag version)
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.10
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.10-all
 ```
 
 Alternatives
