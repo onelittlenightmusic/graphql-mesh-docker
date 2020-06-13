@@ -1,6 +1,6 @@
 #!/bin/bash
-over=0.2.8
-nver=0.2.9
+over=0.2.9
+nver=0.2.10
 sed -i "" "s/$over/$nver/g" docker-compose.yaml
 docker-compose build
 sed -i "" "s/$over/$nver/g" helm-src/values.yaml
