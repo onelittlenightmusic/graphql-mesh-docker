@@ -1,6 +1,6 @@
 version: "3.7"
 services:
-  mesh-ver:
+  mesh:
     build:
       context: ./
       dockerfile: Dockerfile
@@ -11,7 +11,7 @@ services:
     image: hiroyukiosaki/graphql-mesh:v0.2.10
     ports:
     - "4000:4000"
-  mesh-ver-all:
+  mesh-all:
     build:
       context: ./
       dockerfile: Dockerfile-all

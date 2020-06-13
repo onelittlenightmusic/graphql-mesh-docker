@@ -32,6 +32,8 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 ```sh
 # Run on Docker
 docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.10-all
+# or run with docker-compose
+docker-compose up -d mesh-all
 # or run on Kubernetes with helm 
 helm repo add graphql-mesh https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
 helm repo up
@@ -78,7 +80,7 @@ Alternatives
 # docker-compose
 docker-compose up -d mesh
 # or to run vX.X.X-all
-docker-compose -f docker-compose-all.yaml up -d mesh
+docker-compose up -d mesh-all
 ```
 
 After running docker image, you can access to GraphQL Mesh service at `http://localhost:4000` and you will see this screen. 
@@ -138,7 +140,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `mount."init.sh"` | inlined  `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
   | `replicaCount` | Count of replica pods | `1` |
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
-  | `image.tag` | Image tag | `0.2.10` |
+  | `image.tag` | Image tag | `0.2.10-all` |
   | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
   | `imagePullSecrets` | Array of secret name | `[]` |
   | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
