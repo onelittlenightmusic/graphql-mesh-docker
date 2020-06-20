@@ -13,7 +13,16 @@ RUN yarn add \
   @graphql-mesh/tuql@$packagever \
   @graphql-mesh/mysql@$packagever \
   @graphql-mesh/neo4j@$packagever \
-  @graphql-mesh/transform-federation@$packagever\
+  @graphql-mesh/transform-federation@$packagever \
+  @graphql-mesh/transform-rename \
+  @graphql-mesh/transform-prefix \
+  @graphql-mesh/transform-cache \
+  @graphql-mesh/transform-snapshot \
+  @graphql-mesh/transform-mock \
+  @graphql-mesh/transform-resolvers-composition \
+  @graphql-mesh/transform-federation \
+  @graphql-mesh/transform-filter-schema \
+  @graphql-mesh/transform-naming-convention \
   @graphql-mesh/merger-federation@$packagever \
   @apollo/gateway \
   apollo-server
