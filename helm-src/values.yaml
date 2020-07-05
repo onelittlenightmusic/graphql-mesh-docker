@@ -32,7 +32,7 @@ replicaCount: 1
 image:
   repository: hiroyukiosaki/graphql-mesh
   pullPolicy: IfNotPresent
-  tag: "0.2.11-all"
+  tag: "0.2.13-all"
   # tag: "latest" # to simple image
 
 imagePullSecrets: []

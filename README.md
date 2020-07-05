@@ -31,7 +31,7 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.11-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13-all
 # or run with docker-compose
 docker-compose up -d mesh-all
 # or run on Kubernetes with helm 
@@ -55,9 +55,9 @@ GraphQL Mesh Docker runs GraphQL Mesh in Docker container. You can customize Gra
 # Docker Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
-  - tag: `v0.2.11` ([Dockerfile](./Dockerfile))
+  - tag: `v0.2.13` ([Dockerfile](./Dockerfile))
     - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
-  - tag: `v0.2.11-all` ([Dockerfile-all](./Dockerfile))
+  - tag: `v0.2.13-all` ([Dockerfile-all](./Dockerfile))
     - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
 
 # Run
@@ -70,8 +70,8 @@ Simply run this command.
 
 ```sh
 # Just docker run (choose tag version)
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.11
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.11-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13-all
 ```
 
 Alternatives
@@ -140,7 +140,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `mount."init.sh"` | inlined  `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
   | `replicaCount` | Count of replica pods | `1` |
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
-  | `image.tag` | Image tag | `0.2.11-all` |
+  | `image.tag` | Image tag | `0.2.13-all` |
   | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
   | `imagePullSecrets` | Array of secret name | `[]` |
   | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
