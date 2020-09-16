@@ -31,7 +31,7 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
 # or run with docker-compose
 docker-compose up -d mesh-all
 # or run on Kubernetes with helm 
@@ -70,8 +70,8 @@ Simply run this command.
 
 ```sh
 # Just docker run (choose tag version)
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:0.2.13-all
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest
+docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
 ```
 
 Alternatives
