@@ -55,9 +55,9 @@ GraphQL Mesh Docker runs GraphQL Mesh in Docker container. You can customize Gra
 # Docker Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
-  - tag: `v0.2.13` ([Dockerfile](./Dockerfile))
+  - tag: `latest` ([Dockerfile](./Dockerfile))
     - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
-  - tag: `v0.2.13-all` ([Dockerfile-all](./Dockerfile))
+  - tag: `latest-all` ([Dockerfile-all](./Dockerfile))
     - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
 
 # Run
@@ -140,7 +140,7 @@ kind create cluster --name graphql --config kind-config.yaml
   | `mount."init.sh"` | inlined  `init.sh` file. If it exists, container runs GraphQL Mesh after it runs `init.sh` | `None` |
   | `replicaCount` | Count of replica pods | `1` |
   | `image.repository` | Image repository | `hiroyukiosaki/graphql-mesh` |
-  | `image.tag` | Image tag | `0.2.13-all` |
+  | `image.tag` | Image tag | `latest` |
   | `image.pullPolicy` | `imagePullPolicy` | `IfNotPresent`|
   | `imagePullSecrets` | Array of secret name | `[]` |
   | `serviceAccount.create` | Create a ServiceAccount for GraphQL Mesh | `true` |
