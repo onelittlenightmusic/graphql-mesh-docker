@@ -1,0 +1,22 @@
+version: "3.7"
+services:
+  mesh:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+      # volumes:
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    image: hiroyukiosaki/graphql-mesh:latest
+    ports:
+    - "4000:4000"
+  mesh-all:
+    build:
+      context: ./
+      dockerfile: Dockerfile-all
+      # volumes:
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+      args:
+        tag: latest
+    image: hiroyukiosaki/graphql-mesh:latest-all
+    ports:
+    - "4000:4000"

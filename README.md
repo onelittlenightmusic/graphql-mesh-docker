@@ -172,6 +172,8 @@ There are two ways to customize GraphQL Mesh Docker.
 - Place `.meshrc.yaml` in the current directory.
 
   #### On Docker
+
+  - Go to `docker` directory.
   - Edit `docker-compose.yaml` file in order to point your `.meshrc.yaml`
 
   ```yaml
