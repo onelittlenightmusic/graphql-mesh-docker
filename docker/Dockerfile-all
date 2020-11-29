@@ -5,6 +5,7 @@ RUN yarn add \
   @graphql-mesh/json-schema \
   @graphql-mesh/postgraphile \
   @graphql-mesh/grpc \
+  @graphql-mesh/graphql \
   @graphql-mesh/soap \
   @graphql-mesh/mongoose \
   @graphql-mesh/odata \
