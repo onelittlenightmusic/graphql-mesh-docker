@@ -20,3 +20,21 @@ services:
     image: hiroyukiosaki/graphql-mesh:latest-all
     ports:
     - "4000:4000"
+  mesh-alpine:
+    build:
+      context: ./
+      dockerfile: Dockerfile-alpine
+      # volumes:
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    image: hiroyukiosaki/graphql-mesh:latest-alpine
+    ports:
+    - "4000:4000"
+  mesh-all-alpine:
+    build:
+      context: ./
+      dockerfile: Dockerfile-all-alpine
+      # volumes:
+      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    image: hiroyukiosaki/graphql-mesh:latest-all-alpine
+    ports:
+    - "4000:4000"

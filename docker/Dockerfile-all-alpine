@@ -1,0 +1,4 @@
+FROM node:14-alpine
+COPY --from=hiroyukiosaki/graphql-mesh:latest-all /work /
+WORKDIR /work
+CMD if [ -f "init.sh" ]; then sh init.sh; fi && yarn start
