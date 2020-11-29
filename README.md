@@ -55,10 +55,13 @@ GraphQL Mesh Docker runs GraphQL Mesh in Docker container. You can customize Gra
 # Docker Images for GraphQL Mesh
 
 - [`graphql-mesh` on Dockerhub](https://hub.docker.com/repository/docker/hiroyukiosaki/graphql-mesh)
-  - tag: `latest` ([Dockerfile](./Dockerfile))
-    - Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi))
-  - tag: `latest-all` ([Dockerfile-all](./Dockerfile))
-    - Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/)
+
+| Tag | Description |
+|---|---|
+| `latest` ([Dockerfile](./Dockerfile)) | Includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi)) |
+| `latest-alpine` ([Dockerfile](./Dockerfile)) | Alpine version for minimum footprint which includes minimum CLI and handler ([`@graphql-mesh/openapi`](https://graphql-mesh.com/docs/handlers/openapi)) |
+| `latest-all` ([Dockerfile-all](./Dockerfile)) | Includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/) |
+| `latest-all-alpine` ([Dockerfile-all](./Dockerfile)) | Alpine version for minimum footprint which includes [all handlers](https://graphql-mesh.com/docs/handlers/available-handlers/) |
 
 # Run
 
