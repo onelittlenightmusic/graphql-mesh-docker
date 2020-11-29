@@ -1,2 +1,4 @@
-/work/node_modules
+/docker/work/node_modules
+/docker/work/yarn.lock
+/docker/work/example-queries
 /examples
