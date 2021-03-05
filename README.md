@@ -181,7 +181,7 @@ There are two ways to customize GraphQL Mesh Docker.
 
   ```yaml
       volumes:
-        - ./.meshrc.yaml:/work/.meshrc.yaml # <- comment out and ponit your .meshrc.yaml
+        - ./.meshrc.yaml:/work/.meshrc.yaml # <- comment out and point to your .meshrc.yaml
   ```
   - Run `docker-compose up -d mesh`
 
