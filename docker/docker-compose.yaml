@@ -4,37 +4,49 @@ services:
     build:
       context: ./
       dockerfile: Dockerfile
-      # volumes:
-      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    volumes:
+    - ./work/.meshrc.yaml:/work/.meshrc.yaml
     image: hiroyukiosaki/graphql-mesh:latest
     ports:
     - "4000:4000"
+    stdin_open: true
+    tty: true
   mesh-all:
     build:
       context: ./
       dockerfile: Dockerfile-all
-      # volumes:
-      # - ./.meshrc.yaml:/work/.meshrc.yaml
       args:
         tag: latest
+    volumes:
+      - ./work/.meshrc.yaml:/work/.meshrc.yaml
     image: hiroyukiosaki/graphql-mesh:latest-all
     ports:
     - "4000:4000"
+    stdin_open: true
+    tty: true
   mesh-alpine:
     build:
       context: ./
       dockerfile: Dockerfile-alpine
-      # volumes:
-      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    volumes:
+    - ./work/.meshrc.yaml:/work/.meshrc.yaml
     image: hiroyukiosaki/graphql-mesh:latest-alpine
     ports:
     - "4000:4000"
+    stdin_open: true
+    tty: true
   mesh-all-alpine:
     build:
       context: ./
       dockerfile: Dockerfile-all-alpine
-      # volumes:
-      # - ./.meshrc.yaml:/work/.meshrc.yaml
+    volumes:
+    - ./work/.meshrc.yaml:/work/.meshrc.yaml
     image: hiroyukiosaki/graphql-mesh:latest-all-alpine
     ports:
     - "4000:4000"
+    stdin_open: true
+    tty: true
+    # command:
+    # - sh
+    # - -c 
+    # - sleep 3600

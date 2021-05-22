@@ -31,9 +31,9 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --rm hiroyukiosaki/graphql-mesh:latest-all
+docker run --name mesh -p 4000:4000 -it --volume ${PWD}/docker/work/.meshrc:/work/.meshrc.yaml --rm hiroyukiosaki/graphql-mesh:latest-all-alpine
 # or run with docker-compose
-docker-compose up -d mesh-all
+cd docker && docker-compose up -d mesh-all-alpine
 # or run on Kubernetes with helm 
 helm repo add graphql-mesh https://onelittlenightmusic.github.io/graphql-mesh-docker/helm-chart
 helm repo up
@@ -41,6 +41,19 @@ helm install my-graphql-mesh graphql-mesh/graphql-mesh
 ```
 
 And access to `http://localhost:4000`.
+
+Run a query.
+
+```graphql
+{
+  cases {
+    active
+    countryRegion
+  }
+}
+```
+
+![](img/2021-05-21-17-14-46.png)
 
 # Architecture
 
@@ -177,7 +190,7 @@ There are two ways to customize GraphQL Mesh Docker.
   #### On Docker
 
   - Go to `docker` directory.
-  - Edit `docker-compose.yaml` file in order to point your `.meshrc.yaml`
+  - Edit `docker-compose.yaml` file in order to point your `.meshrc.yaml` and mount it to `/work/.meshrc.yaml`
 
   ```yaml
       volumes:
