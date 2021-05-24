@@ -31,7 +31,7 @@ Please prepare only Docker environment or Kubernetes and run the command. No nee
 
 ```sh
 # Run on Docker
-docker run --name mesh -p 4000:4000 -it --volume ${PWD}/docker/work/.meshrc:/work/.meshrc.yaml --rm hiroyukiosaki/graphql-mesh:latest-all-alpine
+docker run --name mesh -p 4000:4000 -it --volume ${PWD}/docker/work/.meshrc.yaml:/work/.meshrc.yaml --rm hiroyukiosaki/graphql-mesh:latest-all-alpine
 # or run with docker-compose
 cd docker && docker-compose up -d mesh-all-alpine
 # or run on Kubernetes with helm 

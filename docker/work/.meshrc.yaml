@@ -9,3 +9,5 @@ sources:
     handler:
       graphql:
         endpoint: https://covid-19-two-rust.vercel.app/api/graphql
+serve:
+  hostname: 0.0.0.0 
