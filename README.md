@@ -297,3 +297,8 @@ Modify Dockerfile and utilize `docker-compose` command to build with Dockerfile.
 docker-compose build
 ```
 
+
+
+### Infrastructure model
+
+![Infrastructure model](.infragenie/infrastructure_model.png)
